@@ -1,0 +1,48 @@
+/* ============================================================
+   NotFound.css — Black / White / Red
+   ============================================================ */
+.notfound-box {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 52px 40px;
+  text-align: center;
+  max-width: 420px;
+  width: 90vw;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-primary);
+  border-radius: var(--radius-sm);
+  box-shadow: 12px 12px 0px rgba(255, 42, 42, 0.15);
+}
+.notfound-icon { 
+  font-size: 3.5rem; 
+  filter: grayscale(100%); 
+  margin-bottom: 8px;
+}
+.notfound-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+.notfound-id {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+.notfound-id code {
+  color: var(--accent-red);
+  background: rgba(255,42,42,0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.notfound-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: 280px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}

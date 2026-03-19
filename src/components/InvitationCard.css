@@ -1,0 +1,334 @@
+/* ============================================================
+   InvitationCard.css — Luxury Ticket / Event Pass Design
+   Black / White / Red
+   ============================================================ */
+
+.invite-card {
+  display: flex;
+  width: min(800px, 94vw);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  position: relative;
+  z-index: 10;
+  box-shadow: 20px 20px 0px rgba(255, 42, 42, 0.1),
+              0 0 0 1px rgba(255,255,255,0.05);
+  overflow: hidden;
+}
+
+/* ── LEFT PANEL: Identity ── */
+.card-left {
+  position: relative;
+  width: 40%;
+  background: var(--grey-light);
+  color: var(--text-inverse);
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Left panel decorative BG */
+.left-bg {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 10% 10%, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 10px 10px;
+  pointer-events: none;
+}
+
+.left-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.left-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-inverse);
+  opacity: 0.7;
+}
+
+/* Avatar section */
+.avatar-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-ring {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  padding: 4px;
+  background: var(--text-inverse);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #f0f0f0;
+  display: block;
+}
+
+.avatar-default {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-initials {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-inverse);
+}
+
+.orbit-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px dashed rgba(0,0,0,0.2);
+  border-radius: 50%;
+  animation: spinSlow 12s linear infinite;
+  z-index: 1;
+}
+
+/* Identity text */
+.left-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.left-invited {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-red);
+}
+
+.left-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.left-year-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid var(--text-inverse);
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-top: 4px;
+}
+
+/* Perforation (ticket cut line) */
+.perforation {
+  position: absolute;
+  right: -6px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 0;
+  z-index: 5;
+}
+.perf-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--bg-primary);
+  border-radius: 50%;
+  border-left: 1px solid var(--border-strong);
+}
+
+/* ── RIGHT PANEL: Details ── */
+.card-right {
+  width: 60%;
+  background: var(--bg-secondary);
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.right-accent-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: var(--accent-red);
+  animation: slideRight 1s ease both;
+}
+
+.right-header {
+  margin-bottom: 24px;
+}
+.right-event-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.right-event-name {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+}
+.right-year {
+  color: var(--accent-red);
+}
+
+.right-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--grey-dark);
+  margin: 0;
+}
+
+.right-message {
+  padding: 24px 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  font-weight: 400;
+  position: relative;
+}
+.quote-icon {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 0;
+  color: var(--border-strong);
+  position: absolute;
+  top: 36px;
+  left: -20px;
+  opacity: 0.5;
+}
+
+/* Details grid */
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 24px 0 32px;
+}
+.full-width {
+  grid-column: 1 / -1;
+}
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.detail-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.detail-icon { display: none; /* keep it clean in this theme */ }
+.detail-val {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Barcode */
+.barcode-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.barcode {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 32px;
+}
+.bar {
+  width: 2px;
+  background: var(--text-primary);
+}
+.barcode-label {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+/* ── Responsive ── */
+@media (max-width: 800px) {
+  .invite-card {
+    flex-direction: column;
+    width: min(400px, 90vw);
+    box-shadow: 12px 12px 0px rgba(255, 42, 42, 0.1);
+  }
+  .card-left {
+    width: 100%;
+    padding: 30px 20px;
+  }
+  .perforation {
+    right: 0; left: 0; bottom: -6px; top: auto;
+    flex-direction: row;
+    height: 12px;
+    padding: 0 10px;
+  }
+  .perf-dot {
+    border-left: none;
+    border-top: 1px solid var(--border-strong);
+  }
+  .card-right {
+    width: 100%;
+    padding: 30px 24px;
+  }
+  .right-event-name {
+    font-size: 2rem;
+  }
+  .quote-icon {
+    left: 0; top: 18px;
+  }
+}

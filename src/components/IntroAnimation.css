@@ -1,0 +1,217 @@
+/* ============================================================
+   IntroAnimation.css — Sealed clickable card
+   Updated to Black / White / Red theme
+   ============================================================ */
+
+.intro-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  cursor: pointer;
+}
+
+.intro-bg-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,42,42,0.1) 0%, transparent 60%);
+  filter: blur(60px);
+  animation: orbDrift 8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* ── 3D card flip setup ── */
+.sealed-card {
+  position: relative;
+  z-index: 10;
+  width: min(340px, 85vw);
+  height: 480px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.sealed-card:hover:not(.sealed-flipping) {
+  transform: rotateY(5deg) scale(1.02);
+}
+.sealed-flipping {
+  transform: rotateY(180deg) scale(0.9) !important;
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease 0.5s;
+}
+
+/* ── Front face ── */
+.sealed-front {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  border-radius: 4px;
+  background: #000;
+  border: 1px solid var(--border-strong);
+  box-shadow: 12px 12px 0px rgba(255, 42, 42, 0.15);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  overflow: hidden;
+  padding: 40px 32px;
+}
+
+/* Grain texture */
+.sealed-front::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 6px 6px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.sealed-top-line,
+.sealed-bottom-line {
+  width: 40px;
+  height: 2px;
+  background: var(--accent-red);
+}
+
+.sealed-watermark {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 6rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.03);
+  letter-spacing: -2px;
+  user-select: none;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sealed-icon {
+  font-size: 2.2rem;
+  filter: grayscale(100%);
+  animation: float 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+.sealed-for {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  z-index: 1;
+}
+
+.sealed-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  z-index: 1;
+}
+
+.sealed-stamp {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--accent-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.sealed-stamp::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255,255,255,0.5);
+}
+.stamp-text {
+  font-family: var(--font-display);
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.sealed-cta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  z-index: 1;
+}
+.cta-pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-red);
+  animation: blink 1.2s step-end infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+.opening-text { color: var(--accent-red); }
+
+/* ── Back face ── */
+.sealed-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: rotateY(180deg);
+  border-radius: 4px;
+  background: #fff;
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #000;
+}
+
+/* ── Corners ── */
+.intro-corner {
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  border-color: var(--border-strong);
+  border-style: solid;
+  z-index: 102;
+  pointer-events: none;
+}
+.intro-corner-tl { top:20px; left:20px;  border-width: 2px 0 0 2px; }
+.intro-corner-tr { top:20px; right:20px; border-width: 2px 2px 0 0; }
+.intro-corner-bl { bottom:20px; left:20px;  border-width: 0 0 2px 2px; }
+.intro-corner-br { bottom:20px; right:20px; border-width: 0 2px 2px 0; }
+
+.intro-opening {
+  animation: introFadeOut 0.8s ease 0.4s forwards;
+}
+@keyframes introFadeOut {
+  to { opacity: 0; pointer-events: none; }
+}
