@@ -76,108 +76,6 @@
 }
 .meta-sep { opacity: 0.4; }
 
-/* ── Project Section ── */
-.home-project {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.project-card {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  background: rgba(42, 42, 42, 0.4);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  backdrop-filter: blur(10px);
-  transition: all var(--transition-mid);
-}
-
-.project-card:hover {
-  border-color: var(--grey-mid);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-@media (min-width: 600px) {
-  .project-card {
-    flex-direction: row;
-    align-items: center;
-  }
-  .project-content {
-    flex: 1.2;
-  }
-  .project-code-window {
-    flex: 1;
-  }
-}
-
-.project-name {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--text-primary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.project-desc {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 24px;
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.ptag {
-  font-size: 0.75rem;
-  padding: 4px 10px;
-  background: var(--bg-tertiary);
-  color: var(--text-muted);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-full);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.project-code-window {
-  background: #0a0a0a;
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-}
-
-.window-header {
-  display: flex;
-  gap: 6px;
-  padding: 10px 14px;
-  background: #1a1a1a;
-  border-bottom: 1px solid var(--border-strong);
-}
-
-.window-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-.window-dot.red { background: #ff5f56; }
-.window-dot.yellow { background: #ffbd2e; }
-.window-dot.green { background: #27c93f; }
-
-.window-body {
-  padding: 16px;
-  font-family: 'Courier New', monospace;
-  font-size: 0.85rem;
-  line-height: 1.8;
-  color: var(--grey-light);
-}
 
 /* ── Members section ── */
 .home-members {
@@ -219,6 +117,7 @@
   flex-direction: column;
   gap: 12px;
 }
+
 
 /* ── Member card button ── */
 .member-card {

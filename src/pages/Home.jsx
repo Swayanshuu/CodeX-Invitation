@@ -14,6 +14,37 @@ export default function Home() {
   const navigate = useNavigate()
   const { members, loading, usedFallback } = useFetchMembers()
 
+  const renderGrid = (list) => (
+    <div className="members-grid">
+      {list.map((m, i) => (
+        <button
+          key={m.id}
+          id={`member-btn-${m.id}`}
+          className="member-card glass-card anim-fade-up"
+          style={{ animationDelay: `${0.1 * i + 0.4}s` }}
+          onClick={() => navigate(`/invite/${m.id}`)}
+          aria-label={`View ${m.name}'s invitation`}
+        >
+          <div className="member-card-avatar">
+            {m.photo ? (
+              <img src={m.photo} alt={m.name}
+                onError={e => { e.target.style.display = 'none' }} />
+            ) : (
+              <span className="member-initials">
+                {m.name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2)}
+              </span>
+            )}
+          </div>
+          <div className="member-card-info">
+            <p className="member-name">{m.name}</p>
+            <p className="member-year">{m.year}</p>
+          </div>
+          <span className="member-arrow">→</span>
+        </button>
+      ))}
+    </div>
+  )
+
   return (
     <div className="page-wrapper home-page">
       <Starfield />
@@ -24,52 +55,25 @@ export default function Home() {
         {/* ── Hero ── */}
         <div className="home-hero anim-fade-up">
           <div className="home-eyebrow anim-fade-up delay-100">
-            <span className="eyebrow-icon">⌨️</span>
-            <span>CodeX Crew</span>
+            <span className="eyebrow-icon">🚀</span>
+            <span>Welcome to the</span>
           </div>
-          <h1 className="home-title" style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)' }}>
-            <span className="text-gradient">Project</span>
+          <h1 className="home-title" style={{ fontSize: 'clamp(2.8rem, 9vw, 5.5rem)' }}>
+            <span className="text-gradient">CODEX</span>
             <br />
-            <span className="home-year-text" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.5rem)', letterSpacing: '4px' }}>Showcase</span>
+            <span className="home-year-text" style={{ fontSize: 'clamp(2rem, 7vw, 4rem)', letterSpacing: '6px' }}>CREW</span>
           </h1>
           <p className="home-subtitle anim-fade-up delay-200">
-            Pushing boundaries and building the future of the web.
+            {EVENT_INFO.tagline}
           </p>
-        </div>
-
-        {/* ── Project Details ── */}
-        <section className="home-project anim-fade-up delay-300">
-          <h2 className="home-section-title">Featured Project</h2>
-          <div className="project-card">
-            <div className="project-content">
-              <h3 className="project-name">Nexus Platform</h3>
-              <p className="project-desc">
-                An immersive, high-performance ecosystem integrating state-of-the-art AI with real-time collaborative development tools. Architected from the ground up by the CodeX Crew to redefine developer productivity.
-              </p>
-              <div className="project-tags">
-                <span className="ptag">React</span>
-                <span className="ptag">Node</span>
-                <span className="ptag">AI Core</span>
-                <span className="ptag">WebSockets</span>
-              </div>
-            </div>
-            <div className="project-code-window">
-              <div className="window-header">
-                <div className="window-dot red"></div>
-                <div className="window-dot yellow"></div>
-                <div className="window-dot green"></div>
-              </div>
-              <div className="window-body">
-                <code>
-                  $ npx codex-crew initiate<br/>
-                  <span style={{color: 'var(--accent-red)'}}>&gt; Booting Nexus Engine...</span><br/>
-                  <span style={{color: 'var(--text-muted)'}}>&gt; AI Modules Online</span><br/>
-                  <span style={{color: 'var(--text-primary)'}}>&gt; System Ready. Let's Build.</span>
-                </code>
-              </div>
-            </div>
+          <div className="home-event-meta anim-fade-up delay-300">
+            <span>📅 {EVENT_INFO.date}</span>
+            <span className="meta-sep">·</span>
+            <span>🕐 {EVENT_INFO.time}</span>
+            <span className="meta-sep">·</span>
+            <span>📍 {EVENT_INFO.venue}</span>
           </div>
-        </section>
+        </div>
 
         {/* ── Member grid ── */}
         <section className="home-members anim-fade-up delay-500">
@@ -89,33 +93,8 @@ export default function Home() {
               <div className="spinner" />
             </div>
           ) : (
-            <div className="members-grid">
-              {members.map((m, i) => (
-                <button
-                  key={m.id}
-                  id={`member-btn-${m.id}`}
-                  className="member-card glass-card anim-fade-up"
-                  style={{ animationDelay: `${0.1 * i + 0.4}s` }}
-                  onClick={() => navigate(`/invite/${m.id}`)}
-                  aria-label={`View ${m.name}'s invitation`}
-                >
-                  <div className="member-card-avatar">
-                    {m.photo ? (
-                      <img src={m.photo} alt={m.name}
-                        onError={e => { e.target.style.display = 'none' }} />
-                    ) : (
-                      <span className="member-initials">
-                        {m.name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2)}
-                      </span>
-                    )}
-                  </div>
-                  <div className="member-card-info">
-                    <p className="member-name">{m.name}</p>
-                    <p className="member-year">{m.year}</p>
-                  </div>
-                  <span className="member-arrow">→</span>
-                </button>
-              ))}
+            <div className="members-lists-container">
+              {renderGrid(members)}
             </div>
           )}
         </section>
