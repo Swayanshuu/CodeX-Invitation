@@ -54,7 +54,7 @@ export const FALLBACK_DATA = [
     name: "Seetal Panda",
     year: "Final Year, Batch 41",
     batch: 41,
-    photo:"https://ik.imagekit.io/ggojcqo6d/Codex-Farewell/1758044946510.jpg",
+    photo:"https://ik.imagekit.io/ggojcqo6d/Codex-Farewell/Gemini_Generated_Image_pfjbbvpfjbbvpfjb.png?updatedAt=1773929242957",
     message:
       "Every hackathon felt unstoppable with you around. Your calm under pressure and sharp instincts are truly one of a kind. Wishing you the greatest adventures ahead! 💡",
   },
